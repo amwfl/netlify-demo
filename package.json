@@ -1,0 +1,25 @@
+{
+  "name": "netlify-demo",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://amwfl@github.com/amwfl/netlify-demo.git"
+  },
+  "author": "Andrew Worcester",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amwfl/netlify-demo/issues"
+  },
+  "homepage": "https://github.com/amwfl/netlify-demo#readme",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
+}
