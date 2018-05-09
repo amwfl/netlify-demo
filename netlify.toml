@@ -1,8 +1,7 @@
 [build]
-  base    = "./"
-  publish = "./dist"
+  publish = "dist"
   command = "yarn build"
-  functions = "./api"
+  functions = "api"
 
 [environment]
   NODE_VERSION = "8.11.1"
