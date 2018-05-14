@@ -1,0 +1,9 @@
+{
+	"plugins": [
+		["transform-regenerator", {
+			"asyncGenerators": false,
+			"generators": false,
+			"async": false
+		}]
+	]
+}
