@@ -36,7 +36,7 @@ export function handler(evt, ctx, cb) {
 async function handlerLogic(evt) {
 	const {lat, lon} = evt.queryStringParameters;
 	if (lat == null || lon == null) { return {error: 'BAD LAT LON'}; }
-	const exclude = ['minutely', 'hourly', 'daily', 'flags'].join(',');
+	const exclude = ['minutely', 'hourly', 'flags'].join(',');
 	const currentWeatherUrl = `${darkSkyBaseUrl}/${darkSkyApiKey}/${lat},${lon}?exclude=${exclude}`;
 	try {
 		const res = await fetch(currentWeatherUrl);

@@ -1,22 +1,40 @@
 import {getLoc} from './util/geo-location';
 const $ = window.jQuery;
 
-$('#weather')
-	.attr('height', $(window).height() * 0.7)
-	.attr('width', $(window).width() * 0.7);
+const canvasSize = $(window).width() * 0.7;
+$('#weather').attr('height', canvasSize).attr('width', canvasSize);
+const skycons = new Skycons({"color": "#0e4d7d"});
+const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const weatherData = [];
+let currentIndex = 0;
 
 getLoc().then(({coords}) => {
 	const {latitude: lat, longitude: lon} = coords;
 	$.getJSON(`/.netlify/functions/current-weather?lat=${lat}&lon=${lon}`)
 		.then(res => {
 			console.log('WEATHER RESPONSE', res);
-			$('#title').text(res.currently.summary);
-
-			var skycons = new Skycons({"color": "white"});
-			// you can add a canvas by it's ID...
-			skycons.add("weather", res.currently.icon);
-
-			// start animation!
-			skycons.play();
+			renderWeather(res.currently, 'Currently');
+			weatherData.push(res.currently, ...res.daily.data);
+			$(document).keypress(function (evt) {
+				currentIndex += 1;
+				if (currentIndex === weatherData.length) { currentIndex = 0; }
+				const label = (
+					currentIndex === 0
+					? 'Currently'
+					: dayNames[(new Date(weatherData[currentIndex].time * 1000)).getDay()]
+				)
+				renderWeather(weatherData[currentIndex], label);
+			});
 		});
 });
+
+function renderWeather(w, label) {
+	$('#timeframe').text(label);
+	$('#title').text(w.summary);
+
+	// you can add a canvas by it's ID...
+	skycons.set("weather", w.icon);
+
+	// start animation!
+	skycons.play();
+}
