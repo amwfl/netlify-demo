@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "concurrently -k \"yarn serve\" \"yarn serve:fn\" \"yarn build:watch\"",
+    "start": "yarn install && concurrently -k \"yarn serve\" \"yarn serve:fn\" \"yarn build:watch\"",
     "build": "yarn build:dl && yarn build:local && yarn build:fn",
     "build:dl": "del ./dist",
     "build:fn": "netlify-lambda build ./functions",
