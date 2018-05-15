@@ -15,7 +15,7 @@ getLoc().then(({coords}) => {
 			console.log('WEATHER RESPONSE', res);
 			renderWeather(res.currently, 'Currently');
 			weatherData.push(res.currently, ...res.daily.data);
-			$(document).keypress(function (evt) {
+			$(document).click(function (evt) {
 				currentIndex += 1;
 				if (currentIndex === weatherData.length) { currentIndex = 0; }
 				const label = (
