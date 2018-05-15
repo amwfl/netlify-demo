@@ -1,7 +1,7 @@
 import {getLoc} from './util/geo-location';
 const $ = window.jQuery;
 
-const canvasSize = $(window).width() * 0.7;
+const canvasSize = Math.min($(window).width(), $(window).height()) * 0.7;
 $('#weather').attr('height', canvasSize).attr('width', canvasSize);
 const skycons = new Skycons({"color": "#0e4d7d"});
 const dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
