@@ -8,7 +8,7 @@
     "build:dl": "del ./dist",
     "build:fn": "netlify-lambda build ./functions",
     "build:js": "babel ./src -d ./dist && rollup -i ./dist/index.js -o ./dist/index.js -f es",
-    "build:cp": "copyfiles ./src/** ./dist -e ./src/**/*.js -u 1",
+    "build:cp": "copyfiles ./src/** ./src/**/* ./dist -e ./src/**/*.js -u 1",
     "build:local": "yarn build:cp && yarn build:js",
     "build:watch": "yarn build:dl && chokidar \"./src/**\" -c \"yarn build:local\" --initial",
     "serve": "browser-sync start -c bs-config.js",
